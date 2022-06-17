@@ -1,38 +1,37 @@
 import { useEffect, useState } from 'react';
 import { Polyline } from 'react-yandex-maps';
-import { useCustomDispatch, useCustomSelector } from '../customHooks/customHooks';
-import { setElementClicked } from '../store/mapSlice';
+import { useCustomDispatch, useCustomSelector } from '../../../../customHooks/customHooks';
+import { setElementClicked } from '../../../../store/mapSlice';
+import styles from '../../../../assets/styles/styles';
 
 const Line: React.FC<any> = (props: any) => {
-  const [strokeWidth, setStrokeWidth] = useState(8);
+  const [strokeColor, setStrokeColor] = useState(styles.grey);
   const [isClick, setIsClick] = useState(false);
   const selector = useCustomSelector((state) => state.mapSlice);
   const dispatch = useCustomDispatch();
 
   useEffect(() => {
     if (selector.idClickedElement !== props.item.id) {
-      setStrokeWidth(8);
+      setStrokeColor(styles.grey);
     }
   });
 
   const clickOnElement = () => {
-    setStrokeWidth(20);
     setIsClick(true);
+    setStrokeColor(styles.red);
     dispatch(setElementClicked(props.item.id));
   };
 
   return (
     <Polyline
       id={props.item.id}
-      onMousemove={() => setStrokeWidth(20)}
+      onMousemove={() => setStrokeColor(styles.red)}
       onClick={() => clickOnElement()}
-      onMouseleave={() => !isClick && setStrokeWidth(8)}
+      onMouseleave={() => !isClick && setStrokeColor(styles.grey)}
       geometry={props.item.geometry}
-      inBlur={() => setStrokeWidth(8)}
       options={{
-        strokeColor: '#000',
-        strokeWidth: strokeWidth,
-        strokeOpacity: 0.5,
+        strokeColor: strokeColor,
+        strokeWidth: 8,
       }}
       properties={{
         balloonContentHeader: 'Балун метки',

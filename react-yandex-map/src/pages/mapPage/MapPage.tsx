@@ -1,5 +1,6 @@
 import { YMaps, Map, Polyline, Placemark } from 'react-yandex-maps';
-import Line from '../../Line/Line';
+import Line from './MapElements/Line/Line';
+import PlacemarkElement from './MapElements/Placemark/Placemark';
 
 const obj = [
   {
@@ -19,6 +20,13 @@ const obj = [
   },
 ];
 
+const placemarks = [
+  {
+    id: 3,
+    geometry: [53.896473, 27.538041],
+  },
+];
+
 const MapPage: React.FC = () => {
   return (
     <YMaps
@@ -32,12 +40,19 @@ const MapPage: React.FC = () => {
         height="80vh"
         defaultState={{
           center: [53.897063, 27.539198],
-          zoom: 18,
+          zoom: 16,
+          behaviors: ['default'],
         }}
-        // onClick={() => clickOnMap()}
+        options={{
+          minZoom: 14,
+          maxZoom: 16,
+        }}
       >
         {obj.map((item) => {
           return <Line key={item.id} item={item} />;
+        })}
+        {placemarks.map((item) => {
+          return <PlacemarkElement key={item.id} item={item} />;
         })}
       </Map>
     </YMaps>
