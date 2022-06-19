@@ -1,6 +1,10 @@
+import { useEffect, useRef, useState } from 'react';
 import { YMaps, Map, Polyline, Placemark } from 'react-yandex-maps';
+import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
+import { setCenter } from '../../store/mapSlice';
 import Line from './MapElements/Line/Line';
 import PlacemarkElement from './MapElements/Placemark/Placemark';
+import Sidebar from './MapElements/Sidebar/Sidebar';
 
 const obj = [
   {
@@ -28,34 +32,49 @@ const placemarks = [
 ];
 
 const MapPage: React.FC = () => {
+  const selector = useCustomSelector((state) => state.mapSlice);
+  const dispatch = useCustomDispatch();
+
   return (
-    <YMaps
-      query={{
-        ns: 'use-load-option',
-        load: 'Map,Placemark,Polyline,geoObject.addon.hint',
-      }}
-    >
-      <Map
-        width="99vw"
-        height="80vh"
-        defaultState={{
-          center: [53.897063, 27.539198],
-          zoom: 16,
-          behaviors: ['default'],
-        }}
-        options={{
-          minZoom: 14,
-          maxZoom: 16,
+    <>
+      <Sidebar />
+      <YMaps
+        query={{
+          ns: 'use-load-option',
+          load: 'Map,Placemark,Polyline,geoObject.addon.hint',
+          apikey: '4eac92f5-31d4-47bc-92f7-627863dc7410',
         }}
       >
-        {obj.map((item) => {
-          return <Line key={item.id} item={item} />;
-        })}
-        {placemarks.map((item) => {
-          return <PlacemarkElement key={item.id} item={item} />;
-        })}
-      </Map>
-    </YMaps>
+        <Map
+          width="99vw"
+          height="80vh"
+          state={{
+            center: selector.center,
+            zoom: 16,
+          }}
+          instanceRef={(ref: any) => {
+            ref &&
+              ref.events.add('boundschange', () => {
+                dispatch(setCenter(ref.getCenter() as number[]));
+              });
+          }}
+          options={{
+            minZoom: 15,
+            maxZoom: 16,
+          }}
+        >
+          {selector.data.map((item) => {
+            return <Line key={item.id} item={item} />;
+          })}
+          {/* {obj.map((item) => {
+            return <Line key={item.id} item={item} />;
+          })} */}
+          {placemarks.map((item) => {
+            return <PlacemarkElement key={item.id} item={item} />;
+          })}
+        </Map>
+      </YMaps>
+    </>
   );
 };
 

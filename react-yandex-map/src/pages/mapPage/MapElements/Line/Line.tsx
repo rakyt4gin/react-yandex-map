@@ -3,8 +3,13 @@ import { Polyline } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../../../customHooks/customHooks';
 import { setElementClicked } from '../../../../store/mapSlice';
 import styles from '../../../../assets/styles/styles';
+import { bdType } from '../../../../store/bd';
 
-const Line: React.FC<any> = (props: any) => {
+type Props = {
+  item: bdType;
+};
+
+const Line: React.FC<Props> = (props) => {
   const [strokeColor, setStrokeColor] = useState(styles.grey);
   const [isClick, setIsClick] = useState(false);
   const selector = useCustomSelector((state) => state.mapSlice);
@@ -28,16 +33,13 @@ const Line: React.FC<any> = (props: any) => {
       onMousemove={() => setStrokeColor(styles.red)}
       onClick={() => clickOnElement()}
       onMouseleave={() => !isClick && setStrokeColor(styles.grey)}
-      geometry={props.item.geometry}
+      geometry={props.item.geometry as number[][]}
       options={{
         strokeColor: strokeColor,
         strokeWidth: 8,
       }}
       properties={{
-        balloonContentHeader: 'Балун метки',
-        balloonContentBody: 'Содержимое <em>балуна</em> метки',
-        balloonContentFooter: 'Подвал',
-        hintContent: '<div style="padding:5px; font-size: 20px;">Хинт метки</div>',
+        hintContent: `<div style="padding:5px; font-size: 20px;">${props.item.hint}</div>`,
       }}
     />
   );
