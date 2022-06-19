@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Polyline } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../../../customHooks/customHooks';
-import { setElementClicked } from '../../../../store/mapSlice';
+import { setElementClicked, toggleSidebar } from '../../../../store/mapSlice';
 import styles from '../../../../assets/styles/styles';
 import { bdType } from '../../../../store/bd';
 
@@ -18,6 +18,8 @@ const Line: React.FC<Props> = (props) => {
   useEffect(() => {
     if (selector.idClickedElement !== props.item.id) {
       setStrokeColor(styles.grey);
+    } else {
+      setStrokeColor(styles.red);
     }
   });
 
@@ -25,6 +27,7 @@ const Line: React.FC<Props> = (props) => {
     setIsClick(true);
     setStrokeColor(styles.red);
     dispatch(setElementClicked(props.item.id));
+    dispatch(toggleSidebar(true));
   };
 
   return (

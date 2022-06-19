@@ -3,4 +3,24 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  &__title{
+    font-size: 1.4rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  &__description{
+    font-size: 1.05rem;
+    text-align: justify;
+    margin-top: 20px;
+  }
+  &__more{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    height: 50px;
+  }
 }

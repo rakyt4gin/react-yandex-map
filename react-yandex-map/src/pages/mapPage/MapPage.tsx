@@ -5,7 +5,8 @@ import { setCenter } from '../../store/mapSlice';
 import Line from './MapElements/Line/Line';
 import PlacemarkElement from './MapElements/Placemark/Placemark';
 import Sidebar from './MapElements/Sidebar/Sidebar';
-
+import './Map.scss';
+import Header from './Header/Header';
 const obj = [
   {
     id: 1,
@@ -37,6 +38,7 @@ const MapPage: React.FC = () => {
 
   return (
     <>
+      <Header />
       <Sidebar />
       <YMaps
         query={{
@@ -46,8 +48,7 @@ const MapPage: React.FC = () => {
         }}
       >
         <Map
-          width="99vw"
-          height="80vh"
+          className="map"
           state={{
             center: selector.center,
             zoom: 16,

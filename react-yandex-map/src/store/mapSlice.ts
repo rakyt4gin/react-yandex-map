@@ -5,12 +5,14 @@ type initialStateType = {
   data: bdType[];
   idClickedElement: string;
   center: number[];
+  isSidebarShow: boolean;
 };
 
 const initialState: initialStateType = {
   data: bd,
   idClickedElement: '',
-  center: [53.897063, 27.539198],
+  center: [53.83822, 27.473374],
+  isSidebarShow: false,
 };
 
 const mapSlice = createSlice({
@@ -23,8 +25,11 @@ const mapSlice = createSlice({
     setCenter: (state, action: PayloadAction<number[]>) => {
       state.center = action.payload;
     },
+    toggleSidebar: (state, action: PayloadAction<boolean>) => {
+      state.isSidebarShow = action.payload;
+    },
   },
 });
 
-export const { setElementClicked, setCenter } = mapSlice.actions;
+export const { setElementClicked, setCenter, toggleSidebar } = mapSlice.actions;
 export default mapSlice.reducer;

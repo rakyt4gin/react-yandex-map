@@ -14,7 +14,7 @@ const Content: React.FC = () => {
     <>
       {selector.idClickedElement && (
         <div className={styles.content}>
-          <h2>{filteredItem.title}</h2>
+          <h2 className={styles.content__title}>{filteredItem.title}</h2>
           <div className={styles.img_wrapper}>
             <AutoplaySlider
               play={true}
@@ -26,6 +26,14 @@ const Content: React.FC = () => {
                 return <div key={img} data-src={img} />;
               })}
             </AutoplaySlider>
+          </div>
+          <div className={styles.content__description}>{filteredItem.description}</div>
+          <div className={styles.content__more}>
+            {filteredItem.more && (
+              <a href={filteredItem.more} target="_blank" rel="noreferrer">
+                Подробнее...
+              </a>
+            )}
           </div>
         </div>
       )}

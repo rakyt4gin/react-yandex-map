@@ -1,9 +1,17 @@
 .sidebar{
-  height: 60vh;
-  width: 50vw;
-  background: white;
+  height: 80vh;
+  width: 20vw;
+  background: #e6ebff;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 100px;
   z-index: 5000;
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  transition: 0.3s;
+  &.show{
+    left: 0;
+  }
+  &.hide{
+    left: -20%;
+  }
 }
