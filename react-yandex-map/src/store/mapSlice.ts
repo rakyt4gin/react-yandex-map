@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import bd, { bdType } from './bd';
+import db, { dbType } from './db';
 
 type initialStateType = {
-  data: bdType[];
+  data: dbType[];
   idClickedElement: string;
   center: number[];
   isSidebarShow: boolean;
 };
 
 const initialState: initialStateType = {
-  data: bd,
+  data: db,
   idClickedElement: '',
   center: [53.83822, 27.473374],
   isSidebarShow: false,

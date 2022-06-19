@@ -1,6 +1,6 @@
-export type bdType = {
+export type dbType = {
   id: string;
-  type: string;
+  type: 'road' | 'place';
   title: string;
   hint: string;
   description: string;
@@ -9,10 +9,10 @@ export type bdType = {
   more: string;
 };
 
-const bd: bdType[] = [
+const db: dbType[] = [
   {
     id: '1',
-    type: 'roads',
+    type: 'road',
     title: 'ул. Академика Курчатова',
     hint: 'ул. Академика Курчатова',
     description:
@@ -28,6 +28,20 @@ const bd: bdType[] = [
     ],
     more: 'https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%87%D0%B0%D1%82%D0%BE%D0%B2,_%D0%98%D0%B3%D0%BE%D1%80%D1%8C_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87',
   },
+  {
+    id: '2',
+    type: 'place',
+    title: 'Памятник Белорусам - героям космоса',
+    hint: 'Памятник Белорусам - героям космоса',
+    description:
+      'Памятный знак установлен на улице Космонавтов в городе Минске и посвящен белорусским космонавтам. На барельефе изображены портреты уроженцев Беларуси, которые побывали в космосе, - Петра Климука, Владимира Коваленка и Олега Новицкого. Создал памятный знак скульптор, народный художник Беларуси Иван Миско.',
+    geometry: [53.853693, 27.475189],
+    images: [
+      'https://g3.dcdn.lt/images/pix/rusu-redakcija-16858-79029373.jpg',
+      'https://citydog.io/content/editor_images/2018/09_september/03_14638/IMG_1517.jpg',
+    ],
+    more: 'https://minsknews.by/v-minske-torzhestvenno-otkryili-pamyatnyiy-znak-belorusam-geroyam-kosmosa/',
+  },
 ];
 
-export default bd;
+export default db;

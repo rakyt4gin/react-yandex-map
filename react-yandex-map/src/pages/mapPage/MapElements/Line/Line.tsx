@@ -3,10 +3,10 @@ import { Polyline } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../../../customHooks/customHooks';
 import { setElementClicked, toggleSidebar } from '../../../../store/mapSlice';
 import styles from '../../../../assets/styles/styles';
-import { bdType } from '../../../../store/bd';
+import { dbType } from '../../../../store/db';
 
 type Props = {
-  item: bdType;
+  item: dbType;
 };
 
 const Line: React.FC<Props> = (props) => {

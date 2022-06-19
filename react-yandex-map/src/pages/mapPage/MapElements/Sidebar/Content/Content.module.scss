@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   &__title{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     height: 50px;
     display: flex;
     align-items: center;
@@ -15,6 +15,7 @@
     font-size: 1.05rem;
     text-align: justify;
     margin-top: 20px;
+    font-style: italic  ;
   }
   &__more{
     position: absolute;
@@ -22,5 +23,27 @@
     align-items: center;
     bottom: 0;
     height: 50px;
+  }
+}
+.nocontent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  img{
+    margin-top: 30px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  p{
+    width: 100%;
+    font-style: italic;
+    font-size: 1.3rem;
+    text-align: justify;
+    margin-bottom: 20px;
+    span{
+      font-weight: bold;
+    }
   }
 }
