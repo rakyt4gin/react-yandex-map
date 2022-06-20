@@ -1,17 +1,34 @@
 import { YMaps, Map, Polyline, Placemark } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
-import { setCenter } from '../../store/mapSlice';
+import { setCenter, setZoom } from '../../store/mapSlice';
 import Line from './MapElements/Line/Line';
 import PlacemarkElement from './MapElements/Placemark/Placemark';
 import Sidebar from './MapElements/Sidebar/Sidebar';
 import './Map.scss';
 import Header from './Header/Header';
+import { useEffect, useRef, useState } from 'react';
 
 const MapPage: React.FC = () => {
+  const [Ref, setRef] = useState<any>(null);
   const selector = useCustomSelector((state) => state.mapSlice);
   const dispatch = useCustomDispatch();
   const lines = selector.data.filter((item) => item.type === 'road');
   const places = selector.data.filter((item) => item.type === 'place');
+
+  useEffect(() => {
+    // Ref &&
+    //   Ref.events.add('boundschange', () => {
+    //     console.log(Ref.getCenter());
+    //     dispatch(setCenter(Ref.getCenter() as number[]));
+    //   });
+    return () => {
+      Ref &&
+        (() => {
+          dispatch(setCenter(Ref.getCenter() as number[]));
+          dispatch(setZoom(Ref.getZoom() as number));
+        })();
+    };
+  }, [Ref]);
 
   return (
     <>
@@ -28,13 +45,11 @@ const MapPage: React.FC = () => {
           className="map"
           state={{
             center: selector.center,
-            zoom: 16,
+            zoom: selector.zoom,
           }}
+          // instanceRef={refFoo}
           instanceRef={(ref: any) => {
-            ref &&
-              ref.events.add('boundschange', () => {
-                dispatch(setCenter(ref.getCenter() as number[]));
-              });
+            ref && setRef(ref);
           }}
           options={{
             minZoom: 15,
