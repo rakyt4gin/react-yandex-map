@@ -4,17 +4,29 @@ import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay.js';
 import 'react-awesome-slider/dist/styles.css';
 import oops from '../../../../../assets/img/oops.png';
+import { useEffect, useState } from 'react';
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Content: React.FC = () => {
+  const [isContentHide, setContentHide] = useState(true);
   const selector = useCustomSelector((state) => state.mapSlice);
   const filteredItem = selector.data.filter((item) => item.id === selector.idClickedElement)[0];
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('ha');
+      setContentHide(false);
+    }, 100);
+    return () => {
+      if (!isContentHide) setContentHide(true);
+    };
+  });
 
   return (
     <>
       {selector.idClickedElement ? (
-        <div className={styles.content}>
+        <div className={`${styles.content} ${!isContentHide && styles.content_show}`}>
           <h2 className={styles.content__title}>{filteredItem.title}</h2>
           {filteredItem.images.length !== 0 && (
             <div className={styles.img_wrapper}>
