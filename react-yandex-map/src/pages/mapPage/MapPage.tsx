@@ -1,4 +1,4 @@
-import { YMaps, Map, Polyline, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Polyline, Placemark, Clusterer } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
 import { setCenter, setZoom } from '../../store/mapSlice';
 import Line from './MapElements/Line/Line';
@@ -53,15 +53,22 @@ const MapPage: React.FC = () => {
           }}
           options={{
             minZoom: 15,
-            maxZoom: 16,
+            maxZoom: 120,
           }}
         >
           {lines.map((item) => {
-            return <Line key={item.id} item={item} />;
+            return <Line key={JSON.stringify(item)} item={item} />;
           })}
-          {places.map((item) => {
-            return <PlacemarkElement key={item.id} item={item} />;
-          })}
+          <Clusterer
+            options={{
+              preset: 'islands#invertedBlueClusterIcons',
+              groupByCoordinates: false,
+            }}
+          >
+            {places.map((item) => {
+              return <PlacemarkElement key={item.id} item={item} />;
+            })}
+          </Clusterer>
         </Map>
       </YMaps>
     </>

@@ -39,7 +39,7 @@ const Line: React.FC<Props> = (props) => {
       geometry={props.item.geometry as number[][]}
       options={{
         strokeColor: strokeColor,
-        strokeWidth: 8,
+        strokeWidth: 7,
       }}
       properties={{
         hintContent: `<div style="padding:5px; font-size: 20px;">${props.item.hint}</div>`,

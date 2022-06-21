@@ -16,13 +16,20 @@ const Content: React.FC = () => {
       {selector.idClickedElement ? (
         <div className={styles.content}>
           <h2 className={styles.content__title}>{filteredItem.title}</h2>
-          <div className={styles.img_wrapper}>
-            <AutoplaySlider play={true} cancelOnInteraction={false} interval={6000} bullets={false}>
-              {filteredItem.images.map((img) => {
-                return <div key={img} data-src={img} />;
-              })}
-            </AutoplaySlider>
-          </div>
+          {filteredItem.images.length !== 0 && (
+            <div className={styles.img_wrapper}>
+              <AutoplaySlider
+                play={false}
+                cancelOnInteraction={true}
+                interval={6000}
+                bullets={false}
+              >
+                {filteredItem.images.map((img) => {
+                  return <div key={img} data-src={img} />;
+                })}
+              </AutoplaySlider>
+            </div>
+          )}
           <div className={styles.content__description}>{filteredItem.description}</div>
           <div className={styles.content__more}>
             {filteredItem.more && (
