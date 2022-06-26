@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Polyline } from 'react-yandex-maps';
+import { Polygon } from 'react-yandex-maps';
 import { useCustomDispatch, useCustomSelector } from '../../../../customHooks/customHooks';
 import { setElementClicked, toggleSidebar } from '../../../../store/mapSlice';
 import styles from '../../../../assets/styles/styles';
@@ -9,37 +9,39 @@ type Props = {
   item: dbType;
 };
 
-const Line: React.FC<Props> = (props) => {
+const PolygonElement: React.FC<Props> = (props) => {
   const [strokeColor, setStrokeColor] = useState(styles.grey);
+  const [fillColor, setfillColor] = useState(styles.turquoise);
   const [isClick, setIsClick] = useState(false);
   const selector = useCustomSelector((state) => state.mapSlice);
   const dispatch = useCustomDispatch();
 
   useEffect(() => {
     if (selector.idClickedElement !== props.item.id) {
-      setStrokeColor(styles.grey);
+      setfillColor(styles.turquoise);
     } else {
-      setStrokeColor(styles.red);
+      setfillColor(styles.red);
     }
   });
 
   const clickOnElement = () => {
     setIsClick(true);
-    setStrokeColor(styles.red);
+    // setStrokeColor(styles.red);
+    setfillColor(styles.red);
     dispatch(setElementClicked(props.item.id));
     dispatch(toggleSidebar(true));
   };
 
   return (
-    <Polyline
+    <Polygon
       id={props.item.id}
-      onMousemove={() => setStrokeColor(styles.red)}
       onClick={() => clickOnElement()}
-      onMouseleave={() => !isClick && setStrokeColor(styles.grey)}
-      geometry={props.item.geometry as number[][]}
+      geometry={props.item.geometry as number[][][]}
+      interactivityModel="default#transparent"
       options={{
         strokeColor: strokeColor,
-        strokeWidth: 5,
+        fillColor: fillColor,
+        strokeWidth: 2,
       }}
       properties={{
         hintContent: `<div style="padding:5px; font-size: 20px;">${props.item.hint}</div>`,
@@ -48,4 +50,4 @@ const Line: React.FC<Props> = (props) => {
   );
 };
 
-export default Line;
+export default PolygonElement;

@@ -42,7 +42,11 @@ const Content: React.FC = () => {
               </AutoplaySlider>
             </div>
           )}
-          <div className={styles.content__description}>{filteredItem.description}</div>
+          <div className={styles.content__description}>
+            <div className={styles.content__description_inner_content}>
+              {filteredItem.description}
+            </div>
+          </div>
           <div className={styles.content__more}>
             {filteredItem.more && (
               <a href={filteredItem.more} target="_blank" rel="noreferrer">

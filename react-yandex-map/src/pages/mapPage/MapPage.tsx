@@ -7,6 +7,7 @@ import Sidebar from './MapElements/Sidebar/Sidebar';
 import './Map.scss';
 import Header from './Header/Header';
 import { useEffect, useRef, useState } from 'react';
+import Polygon from './MapElements/Polygon/Polygon';
 
 const MapPage: React.FC = () => {
   const [Ref, setRef] = useState<any>(null);
@@ -14,6 +15,7 @@ const MapPage: React.FC = () => {
   const dispatch = useCustomDispatch();
   const lines = selector.data.filter((item) => item.type === 'road');
   const places = selector.data.filter((item) => item.type === 'place');
+  const areas = selector.data.filter((item) => item.type === 'area');
 
   useEffect(() => {
     // Ref &&
@@ -52,12 +54,15 @@ const MapPage: React.FC = () => {
             ref && setRef(ref);
           }}
           options={{
-            minZoom: 15,
+            minZoom: 14,
             maxZoom: 120,
           }}
         >
           {lines.map((item) => {
             return <Line key={JSON.stringify(item)} item={item} />;
+          })}
+          {areas.map((item) => {
+            return <Polygon key={JSON.stringify(item)} item={item} />;
           })}
           <Clusterer
             options={{
