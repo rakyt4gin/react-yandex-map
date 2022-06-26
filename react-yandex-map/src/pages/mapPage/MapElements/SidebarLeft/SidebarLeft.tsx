@@ -3,7 +3,7 @@ import Button from './Button/ToggleSidebarButton';
 import Content from './Content/Content';
 import styles from './Sidebar.module.scss';
 
-const Sidebar: React.FC = () => {
+const SidebarLeft: React.FC = () => {
   const selector = useCustomSelector((state) => state.mapSlice);
 
   return (
@@ -14,4 +14,4 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarLeft;

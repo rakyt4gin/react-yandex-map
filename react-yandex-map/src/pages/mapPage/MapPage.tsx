@@ -3,11 +3,12 @@ import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHo
 import { setCenter, setZoom } from '../../store/mapSlice';
 import Line from './MapElements/Line/Line';
 import PlacemarkElement from './MapElements/Placemark/Placemark';
-import Sidebar from './MapElements/Sidebar/Sidebar';
 import './Map.scss';
 import Header from './Header/Header';
 import { useEffect, useRef, useState } from 'react';
 import Polygon from './MapElements/Polygon/Polygon';
+import SidebarLeft from './MapElements/SidebarLeft/SidebarLeft';
+import SidebarRight from './MapElements/SidebarRight/SidebarRight';
 
 const MapPage: React.FC = () => {
   const [Ref, setRef] = useState<any>(null);
@@ -18,11 +19,6 @@ const MapPage: React.FC = () => {
   const areas = selector.data.filter((item) => item.type === 'area');
 
   useEffect(() => {
-    // Ref &&
-    //   Ref.events.add('boundschange', () => {
-    //     console.log(Ref.getCenter());
-    //     dispatch(setCenter(Ref.getCenter() as number[]));
-    //   });
     return () => {
       Ref &&
         (() => {
@@ -35,7 +31,8 @@ const MapPage: React.FC = () => {
   return (
     <>
       <Header />
-      <Sidebar />
+      <SidebarLeft />
+      <SidebarRight />
       <YMaps
         query={{
           ns: 'use-load-option',
@@ -49,7 +46,6 @@ const MapPage: React.FC = () => {
             center: selector.center,
             zoom: selector.zoom,
           }}
-          // instanceRef={refFoo}
           instanceRef={(ref: any) => {
             ref && setRef(ref);
           }}
