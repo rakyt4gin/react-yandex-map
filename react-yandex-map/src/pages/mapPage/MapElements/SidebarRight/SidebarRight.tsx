@@ -7,7 +7,7 @@ const SidebarRight: React.FC = () => {
   const selector = useCustomSelector((state) => state.mapSlice);
 
   return (
-    <div className={`${styles.sidebar} ${selector.isSidebarShow ? styles.show : styles.hide}`}>
+    <div className={`${styles.sidebar} ${selector.isSidebarRightShow ? styles.show : styles.hide}`}>
       <Content />
       <Button />
     </div>

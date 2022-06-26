@@ -4,7 +4,7 @@
   position: absolute;
   background: white;
   top: 10%;
-  left: -32px;
+  left: -31.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +21,10 @@
     span{
       transition: 0.3s;
       &.show{
-        transform: rotate(0deg);
+        transform: rotate(180deg);
       }
       &.hide{
-        transform: rotate(180deg);
+        transform: rotate(0deg);
       }
     }
   }

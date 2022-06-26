@@ -7,6 +7,7 @@ type initialStateType = {
   center: number[];
   zoom: number;
   isSidebarShow: boolean;
+  isSidebarRightShow: boolean;
 };
 
 const initialState: initialStateType = {
@@ -15,6 +16,7 @@ const initialState: initialStateType = {
   center: [53.896586, 27.548635],
   zoom: 16,
   isSidebarShow: false,
+  isSidebarRightShow: false,
 };
 
 const mapSlice = createSlice({
@@ -33,8 +35,12 @@ const mapSlice = createSlice({
     toggleSidebar: (state, action: PayloadAction<boolean>) => {
       state.isSidebarShow = action.payload;
     },
+    toggleSidebarRight: (state, action: PayloadAction<boolean>) => {
+      state.isSidebarRightShow = action.payload;
+    },
   },
 });
 
-export const { setElementClicked, setCenter, toggleSidebar, setZoom } = mapSlice.actions;
+export const { setElementClicked, setCenter, toggleSidebar, setZoom, toggleSidebarRight } =
+  mapSlice.actions;
 export default mapSlice.reducer;
