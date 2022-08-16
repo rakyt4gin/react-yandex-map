@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useCustomDispatch, useCustomSelector } from '../../../../../../customHooks/customHooks';
-import { dbType } from '../../../../../../store/db';
+import { dbStoreType } from '../../../../../../store/db';
 import {
   setCenter,
   setElementClicked,
@@ -10,7 +10,7 @@ import {
 import styles from './ContentItem.module.scss';
 
 type Props = {
-  item: dbType;
+  item: dbStoreType;
 };
 
 const ContentItem: React.FC<Props> = ({ item }) => {
@@ -29,7 +29,7 @@ const ContentItem: React.FC<Props> = ({ item }) => {
     }
   }, [selector.idClickedElement]);
 
-  const onItemClick = (item: dbType) => {
+  const onItemClick = (item: dbStoreType) => {
     let geometry: number[] | number[][] | number[][][];
     switch (item.type) {
       case 'place':

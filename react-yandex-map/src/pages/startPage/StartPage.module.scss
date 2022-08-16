@@ -1,7 +1,80 @@
-.main{
+.main {
+  position: relative;
+
+  .greetings {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    padding: 0% 0 5% 0;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: 'MyFont', cursive;
+
+    &_btn {
+      background: transparent;
+      color: #d6feff;
+      font-size: 30px;
+      border: none;
+      transition: all 0.3s;
+      -webkit-animation: 1s linear 0s infinite alternate move_eye;
+      -moz-animation: 1s linear 0s infinite alternate move_eye;
+      -o-animation: 1s linear 0s infinite alternate move_eye;
+      animation: 1s linear 0s infinite alternate move_eye;
+
+    }
+  }
+
+  .year {
+    max-width: 400px;
+  }
+}
+
+.carousel {
   width: 100vw;
   height: 100vh;
-  &__content{
-    
+}
+
+@-webkit-keyframes move_eye {
+  from {
+    font-size: 30px;
+  }
+
+  to {
+    font-size: 32px;
+  }
+}
+
+@-moz-keyframes move_eye {
+  from {
+    font-size: 30px;
+  }
+
+  to {
+    font-size: 32px;
+  }
+}
+
+@-o-keyframes move_eye {
+  from {
+    font-size: 30px;
+  }
+
+  to {
+    font-size: 32px;
+  }
+}
+
+@keyframes move_eye {
+  from {
+    font-size: 30px;
+  }
+
+  to {
+    font-size: 32px;
   }
 }

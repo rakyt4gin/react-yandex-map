@@ -46,6 +46,8 @@ const Content: React.FC = () => {
                   bullets={false}
                 >
                   {filteredItem.images.map((img) => {
+                    console.log(img);
+
                     return <div key={img} data-src={img} />;
                   })}
                 </AutoplaySlider>

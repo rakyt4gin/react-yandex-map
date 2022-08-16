@@ -6,10 +6,10 @@ import { setElementClicked, toggleSidebar } from '../../../../store/mapSlice';
 import infoIcon from '../../../../assets/svg/info.svg';
 import home from '../../../../assets/svg/home.svg';
 import styles from '../../../../assets/styles/styles';
-import { dbType } from '../../../../store/db';
+import { dbStoreType } from '../../../../store/db';
 
 type Props = {
-  item: dbType;
+  item: dbStoreType;
 };
 
 const PlacemarkElement: React.FC<Props> = (props) => {

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import db, { dbType } from './db';
+import db, { dbStoreType } from './db';
 
 type initialStateType = {
-  data: dbType[];
+  data: dbStoreType[];
   idClickedElement: string;
   center: number[];
   zoom: number;
@@ -23,6 +23,9 @@ const mapSlice = createSlice({
   name: 'mapSlice',
   initialState,
   reducers: {
+    setData: (state, action: PayloadAction<dbStoreType[]>) => {
+      state.data = action.payload;
+    },
     setElementClicked: (state, action: PayloadAction<string>) => {
       state.idClickedElement = action.payload;
     },
@@ -41,6 +44,6 @@ const mapSlice = createSlice({
   },
 });
 
-export const { setElementClicked, setCenter, toggleSidebar, setZoom, toggleSidebarRight } =
+export const { setElementClicked, setCenter, toggleSidebar, setZoom, toggleSidebarRight, setData } =
   mapSlice.actions;
 export default mapSlice.reducer;

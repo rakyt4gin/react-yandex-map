@@ -105,7 +105,7 @@ import stasov_1 from '../assets/img/stasov_1.jpg';
 import vavilov from '../assets/img/vavilov.jpg';
 import vavilov_1 from '../assets/img/vavilov_1.jpg';
 
-export type dbType = {
+export type dbStoreType = {
   id: string;
   type: 'road' | 'place' | 'area';
   title: string;
@@ -116,7 +116,7 @@ export type dbType = {
   more?: string;
 };
 
-const db: dbType[] = [
+const db: dbStoreType[] = [
   {
     id: '76',
     type: 'road',

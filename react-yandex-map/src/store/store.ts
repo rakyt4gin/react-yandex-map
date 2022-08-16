@@ -1,15 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension';
+import { mapApi } from './apiSlice';
 import mapSlice from './mapSlice';
 
 const RootReducer = combineReducers({
+  [mapApi.reducerPath]: mapApi.reducer,
   mapSlice: mapSlice,
 });
 
 const Store = () => {
   return configureStore({
     reducer: RootReducer,
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(fetchApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(mapApi.middleware),
     devTools: process.env.NODE_ENV !== 'production',
   });
 };
