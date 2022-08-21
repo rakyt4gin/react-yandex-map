@@ -1,4 +1,4 @@
-.header{
+.header {
   position: absolute;
   top: 0;
   background: transparent;
@@ -8,7 +8,33 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  &__container{
+
+  &__container {
     width: 98%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .search_wrapper {
+      min-width: 350px;
+      position: relative;
+      z-index: 6000;
+
+      .search_result {
+        position: absolute;
+        z-index: 6000;
+
+        .item {
+          background: white;
+          border-bottom: 2px solid grey;
+          padding: 10px;
+          cursor: pointer;
+
+          &:hover {
+            color: cornflowerblue;
+          }
+        }
+      }
+    }
   }
 }

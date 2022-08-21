@@ -26,11 +26,14 @@ const Content: React.FC = () => {
         (isContentLoading ? (
           <ContentLoader />
         ) : (
-          <div className={styles.content}>
-            {sortData.map((item) => {
-              return <ContentItem key={JSON.stringify(item)} item={item} />;
-            })}
-          </div>
+          <>
+            <div className={styles.content_title}>Элементы карты</div>
+            <div className={styles.content}>
+              {sortData.map((item) => {
+                return <ContentItem key={JSON.stringify(item)} item={item} />;
+              })}
+            </div>
+          </>
         ))}
     </>
   );

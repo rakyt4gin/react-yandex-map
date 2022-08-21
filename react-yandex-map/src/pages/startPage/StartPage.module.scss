@@ -16,16 +16,18 @@
     font-family: 'MyFont', cursive;
 
     &_btn {
+      &_animation {
+        -webkit-animation: 1s linear 0s infinite alternate move_eye;
+        -moz-animation: 1s linear 0s infinite alternate move_eye;
+        -o-animation: 1s linear 0s infinite alternate move_eye;
+        animation: 1s linear 0s infinite alternate move_eye;
+      }
+
       background: transparent;
       color: #d6feff;
       font-size: 30px;
       border: none;
       transition: all 0.3s;
-      -webkit-animation: 1s linear 0s infinite alternate move_eye;
-      -moz-animation: 1s linear 0s infinite alternate move_eye;
-      -o-animation: 1s linear 0s infinite alternate move_eye;
-      animation: 1s linear 0s infinite alternate move_eye;
-
     }
   }
 
@@ -37,6 +39,20 @@
 .carousel {
   width: 100vw;
   height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  position: relative;
+
+  .year {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%);
+  }
 }
 
 @-webkit-keyframes move_eye {

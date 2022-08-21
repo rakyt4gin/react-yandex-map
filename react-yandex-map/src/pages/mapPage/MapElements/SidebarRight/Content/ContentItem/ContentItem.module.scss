@@ -1,4 +1,4 @@
-.item{
+.item {
   height: max-content;
   border-bottom: 2px solid black;
   display: flex;
@@ -6,13 +6,17 @@
   cursor: pointer;
   align-items: center;
   transition: background 0.3s;
-  &:hover{
+  padding: 10px;
+
+  &:hover {
     background: #a2b4ff;
   }
-  &_selected{
+
+  &_selected {
     background: #eb2f2f;
   }
-  h3{
+
+  h3 {
     width: 95%;
     margin: 0 auto;
   }

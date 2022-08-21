@@ -1,0 +1,46 @@
+.card {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    &_container {
+        display: flex;
+        align-items: center;
+    }
+
+    .img {
+        border-radius: 50%;
+        overflow: hidden;
+        max-height: 200px;
+        max-width: 200px;
+        margin-right: 100px;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .content {
+        &_title {
+            font-size: 35px;
+            text-decoration: underline;
+        }
+
+    }
+
+    .btn {
+        background: transparent;
+        border: none;
+
+        img {
+            height: 100%;
+        }
+
+        &_wrapper {}
+    }
+}

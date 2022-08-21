@@ -1,22 +1,32 @@
-.content{
+.content {
   overflow-y: scroll;
   height: 100%;
+  padding-top: 50px;
+
+  &_title {
+    font-size: 20px;
+    padding: 10px;
+    position: fixed;
+    background: #e6ebff;
+    width: 100%;
+  }
+
   &::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   /* Track */
   &::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 10px;
   }
-  
+
   /* Handle */
   &::-webkit-scrollbar-thumb {
     background: #79a9fb;
     border-radius: 10px;
   }
-  
+
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
     background: #555;

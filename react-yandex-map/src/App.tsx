@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import StartPage from './pages/startPage/StartPage';
 import MapPage from './pages/mapPage/MapPage';
 import { dbType, useGetMapObjectsQuery } from './store/apiSlice';
+import AboutPage from './pages/about/about';
 
 const transformData = (data: dbType[]) => {
   return data.map((item) => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );

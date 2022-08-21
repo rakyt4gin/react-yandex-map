@@ -6,6 +6,7 @@ import School_0 from './images/school-0.jpg';
 import School_1 from './images/school-1.jpg';
 import Year from './images/year.png';
 import styles from './StartPage.module.scss';
+import cn from 'classnames';
 
 const images = [School_0, School_1];
 
@@ -19,12 +20,20 @@ const StartPage: React.FC = () => {
   return (
     <div className={styles.main}>
       <div className={styles.greetings}>
-        <img src={Year} alt="" className={styles.year} />
-        <Button className={styles.greetings_btn} onClick={() => navigation('/map')}>
+        <div className={styles.wrapper}>
+          <img src={Year} alt="" className={styles.year} />
+          <Button className={cn(styles.greetings_btn)} onClick={() => navigation('/about')}>
+            О проекте
+          </Button>
+        </div>
+        <Button
+          className={cn(styles.greetings_btn, styles.greetings_btn_animation)}
+          onClick={() => navigation('/map')}
+        >
           Перейти на карту
         </Button>
       </div>
-      <Carousel autoplaySpeed={10000} pauseOnHover={false} autoplay>
+      <Carousel autoplaySpeed={7000} pauseOnHover={false} autoplay>
         {images.map((item) => {
           return (
             <div key={item}>
