@@ -1,96 +1,111 @@
-.main {
+.global {
+  top: -100vh;
+  height: 200vh;
+  background: url('./images/school-big.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
+  transition: top 0.5s ease-in-out;
 
-  .greetings {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    padding: 0% 0 5% 0;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    font-family: 'MyFont', cursive;
 
-    &_btn {
-      &_animation {
-        -webkit-animation: 1s linear 0s infinite alternate move_eye;
-        -moz-animation: 1s linear 0s infinite alternate move_eye;
-        -o-animation: 1s linear 0s infinite alternate move_eye;
-        animation: 1s linear 0s infinite alternate move_eye;
+  .main {
+    position: relative;
+
+    .greetings {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      padding: 0% 0 5% 0;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      font-family: 'MyFont', cursive;
+
+      &_btn {
+        &_animation {
+          -webkit-animation: 1s linear 0s infinite alternate move_eye;
+          -moz-animation: 1s linear 0s infinite alternate move_eye;
+          -o-animation: 1s linear 0s infinite alternate move_eye;
+          animation: 1s linear 0s infinite alternate move_eye;
+        }
+
+        background: transparent;
+        color: #d6feff;
+        font-size: 30px;
+        border: none;
+        transition: all 0.3s;
       }
+    }
 
-      background: transparent;
-      color: #d6feff;
-      font-size: 30px;
-      border: none;
-      transition: all 0.3s;
+    .year {
+      max-width: 400px;
     }
   }
 
-  .year {
-    max-width: 400px;
+  .carousel {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    position: relative;
+
+    .year {
+      position: absolute;
+      top: 0;
+      right: 50%;
+      transform: translate(50%);
+    }
+  }
+
+  @-webkit-keyframes move_eye {
+    from {
+      font-size: 30px;
+    }
+
+    to {
+      font-size: 32px;
+    }
+  }
+
+  @-moz-keyframes move_eye {
+    from {
+      font-size: 30px;
+    }
+
+    to {
+      font-size: 32px;
+    }
+  }
+
+  @-o-keyframes move_eye {
+    from {
+      font-size: 30px;
+    }
+
+    to {
+      font-size: 32px;
+    }
+  }
+
+  @keyframes move_eye {
+    from {
+      font-size: 30px;
+    }
+
+    to {
+      font-size: 32px;
+    }
   }
 }
 
-.carousel {
-  width: 100vw;
-  height: 100vh;
-}
-
-.wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  position: relative;
-
-  .year {
-    position: absolute;
-    top: 0;
-    right: 50%;
-    transform: translate(50%);
-  }
-}
-
-@-webkit-keyframes move_eye {
-  from {
-    font-size: 30px;
-  }
-
-  to {
-    font-size: 32px;
-  }
-}
-
-@-moz-keyframes move_eye {
-  from {
-    font-size: 30px;
-  }
-
-  to {
-    font-size: 32px;
-  }
-}
-
-@-o-keyframes move_eye {
-  from {
-    font-size: 30px;
-  }
-
-  to {
-    font-size: 32px;
-  }
-}
-
-@keyframes move_eye {
-  from {
-    font-size: 30px;
-  }
-
-  to {
-    font-size: 32px;
-  }
+.about_active {
+  top: 0 !important;
 }

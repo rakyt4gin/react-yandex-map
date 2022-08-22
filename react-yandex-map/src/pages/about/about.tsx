@@ -7,29 +7,21 @@ import Year from './images/year.png';
 import styles from './about.module.scss';
 import bgImg from './img/Reki.jpg';
 import Card from './cards/card';
-import { useCustomSelector } from '../../customHooks/customHooks';
+import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
+import { setAboutPageVisible } from '../../store/aboutSlice';
+import arrow from './img/Arrow.svg';
 
 const AboutPage: React.FC = () => {
   const navigation = useNavigate();
-  const { data } = useCustomSelector((state) => state.about);
+  const { data, AboutPageVisible } = useCustomSelector((state) => state.about);
+  const dispatch = useCustomDispatch();
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${bgImg})`,
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
-      className={styles.about}
-    >
-      <div className={styles.blur}></div>
-
+    <div className={styles.about}>
+      <Button className={cn(styles.back_btn)} onClick={() => dispatch(setAboutPageVisible(false))}>
+        На главную
+      </Button>
       <div className={styles.container}>
-        <Button className={cn(styles.back_btn)} onClick={() => navigation('/')}>
-          На главную
-        </Button>
         <div className={styles.header}>
           <h2 className={styles.title}>
             Проект <span>`2022</span> - год исторической памяти.<span>`</span>
@@ -43,11 +35,10 @@ const AboutPage: React.FC = () => {
             жить и развиваться на этой земле как считаем нужным
           </p>
         </div>
-        <div className={styles.cards}>
-          {data.map((item) => {
-            return <Card key={item.id} {...item} />;
-          })}
-        </div>
+        <div className={styles.cards}></div>
+        {data.map((item) => {
+          return <Card key={item.id} {...item} />;
+        })}
       </div>
     </div>
   );

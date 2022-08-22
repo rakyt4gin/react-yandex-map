@@ -4,6 +4,7 @@ import me from '../pages/about/img/me.jpg';
 import ten from '../pages/about/img/10.jpg';
 
 type initialStateType = {
+  AboutPageVisible: boolean;
   data: {
     id: number;
     title: string;
@@ -13,6 +14,7 @@ type initialStateType = {
 };
 
 const initialState: initialStateType = {
+  AboutPageVisible: false,
   data: [
     {
       id: 1,
@@ -39,11 +41,14 @@ const aboutSlice = createSlice({
   name: 'mapSlice',
   initialState,
   reducers: {
+    setAboutPageVisible: (state, action: PayloadAction<boolean>) => {
+      state.AboutPageVisible = action.payload;
+    },
     setData: (state, action: PayloadAction<initialStateType>) => {
       state.data = action.payload.data;
     },
   },
 });
 
-export const { setData } = aboutSlice.actions;
+export const { setData, setAboutPageVisible } = aboutSlice.actions;
 export default aboutSlice.reducer;

@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import Polygon from './MapElements/Polygon/Polygon';
 import SidebarLeft from './MapElements/SidebarLeft/SidebarLeft';
 import SidebarRight from './MapElements/SidebarRight/SidebarRight';
+import AboutPage from '../about/about';
 
 const MapPage: React.FC = () => {
   const [Ref, setRef] = useState<any>(null);
