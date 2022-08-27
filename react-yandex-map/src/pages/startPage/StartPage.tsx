@@ -10,6 +10,7 @@ import cn from 'classnames';
 import AboutPage from '../about/about';
 import { useCustomDispatch, useCustomSelector } from '../../customHooks/customHooks';
 import { setAboutPageVisible } from '../../store/aboutSlice';
+import { QuestionOutlined } from '@ant-design/icons';
 
 const images = [School_0];
 
@@ -18,10 +19,6 @@ const StartPage: React.FC = () => {
   const { AboutPageVisible } = useCustomSelector((state) => state.about);
   const dispatch = useCustomDispatch();
 
-  const contentStyle: React.CSSProperties = {
-    height: '100vh',
-    width: '100vw',
-  };
   return (
     <div
       className={cn(styles.global, {
@@ -46,16 +43,10 @@ const StartPage: React.FC = () => {
           >
             Перейти на карту
           </Button>
+          <Button className={styles.question_btn} onClick={() => navigation('/help')}>
+            <QuestionOutlined />
+          </Button>
         </div>
-        {/* <Carousel autoplaySpeed={7000} pauseOnHover={false} autoplay>
-          {images.map((item) => {
-            return (
-              <div key={item}>
-                <img style={contentStyle} src={item} alt="" />
-              </div>
-            );
-          })}
-        </Carousel> */}
       </div>
     </div>
   );

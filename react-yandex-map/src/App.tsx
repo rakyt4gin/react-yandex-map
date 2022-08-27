@@ -4,6 +4,7 @@ import StartPage from './pages/startPage/StartPage';
 import MapPage from './pages/mapPage/MapPage';
 import { dbType, useGetMapObjectsQuery } from './store/apiSlice';
 import AboutPage from './pages/about/about';
+import Help from './pages/help/help';
 
 const transformData = (data: dbType[]) => {
   return data.map((item) => {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <Route path="/" element={<StartPage />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/help" element={<Help />} />
       </Routes>
     </BrowserRouter>
   );

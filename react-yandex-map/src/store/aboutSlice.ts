@@ -20,19 +20,19 @@ const initialState: initialStateType = {
       id: 1,
       title: 'Калачевский Глеб Викторович',
       img: director,
-      text: 'Директор. Руководитель проекта. Новатор.',
+      text: 'Директор. Руководитель проекта. Новатор',
     },
     {
       id: 2,
       title: 'Скринник Андрей Дмитриевич',
       img: me,
-      text: 'Frontend Developer.',
+      text: 'Frontend Developer',
     },
     {
       id: 3,
       title: "11 'П' класс",
       img: ten,
-      text: 'Предоставление информации.',
+      text: 'Информационное обеспечение',
     },
   ],
 };

@@ -24,9 +24,9 @@ const AboutPage: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>
-            Проект <span>`2022</span> - год исторической памяти.<span>`</span>
+            Проект <span>`Эра исторической памяти`</span>
           </h2>
-          <h3 className={styles.subtitle}>Без знания прошлого невозможно успешное будущее.</h3>
+          <h3 className={styles.subtitle}>Без знания прошлого невозможно успешное будущее</h3>
           <p className={styles.text}>
             <span>История</span> Беларуси многогранна, у нас было много трагических и героических
             страниц в любом историческом периоде, но нам всегда было чем гордиться. Прежде всего
