@@ -13,7 +13,7 @@ type initialStateType = {
 const initialState: initialStateType = {
   data: db,
   idClickedElement: '',
-  center: [53.896586, 27.548635],
+  center: [53.876793, 27.505014],
   zoom: 16,
   isSidebarShow: false,
   isSidebarRightShow: false,

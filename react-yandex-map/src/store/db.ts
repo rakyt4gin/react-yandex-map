@@ -104,6 +104,8 @@ import stasov from '../assets/img/stasov.jpg';
 import stasov_1 from '../assets/img/stasov_1.jpg';
 import vavilov from '../assets/img/vavilov.jpg';
 import vavilov_1 from '../assets/img/vavilov_1.jpg';
+import school83 from '../assets/img/83school.jpg';
+import school83_1 from '../assets/img/83school_1.jpg';
 
 export type dbStoreType = {
   id: string;
@@ -117,6 +119,16 @@ export type dbStoreType = {
 };
 
 const db: dbStoreType[] = [
+  {
+    id: '77',
+    type: 'place',
+    title: 'Музей Боевой Славы ГУО "Средняя школа №83 г.Минска имени Г.К.Жукова',
+    hint: 'Музей Боевой Славы ГУО "Средняя школа №83 г.Минска имени Г.К.Жукова',
+    description: `Являясь частью ГУО «Средняя школа № 83 г. Минска им. Г.К. Жукова» музей начал работу в мае 2004 г. (приказ учреждения образования об открытии музея № 89-од от 01.12.2002 г.). Работа над созданием музея началась с момента присвоения школе имени выдающегося полководца Г.К. Жукова 1 июля 2000 г. `,
+    images: [school83, school83_1],
+    geometry: [53.876793, 27.505014],
+    more: 'http://museum.sch83.minsk.edu.by/',
+  },
   {
     id: '76',
     type: 'road',
