@@ -1,7 +1,8 @@
 import { Button, Carousel, CarouselProps } from 'antd';
 import { CarouselRef } from 'antd/lib/carousel';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCustomSelector } from '../../customHooks/customHooks';
 import styles from './help.module.scss';
 import img1 from './images/1.jpg';
 import img2 from './images/2.jpg';
@@ -15,9 +16,13 @@ const contentStyle: React.CSSProperties = {
 const images = [img1, img2, img3];
 
 const Help = (): JSX.Element => {
+  const selector = useCustomSelector((state) => state.appSlice);
   const navigation = useNavigate();
   const [slides, setSlides] = useState(0);
   const carouselRef = useRef<CarouselRef>(null);
+  useEffect(() => {
+    sessionStorage.setItem('isHelp', 'true');
+  });
 
   return (
     <div className={styles.help}>
@@ -34,7 +39,12 @@ const Help = (): JSX.Element => {
           </button>
         )}
 
-        <button className={styles.btn} onClick={() => navigation('/')}>
+        <button
+          className={styles.btn}
+          onClick={() => {
+            selector.redirectToMapPage ? navigation('/map') : navigation('/');
+          }}
+        >
           {slides !== images.length - 1 ? <>Пропустить</> : <>Завершить</>}
         </button>
         {slides !== images.length - 1 && (

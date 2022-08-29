@@ -20,6 +20,10 @@ const MapPage: React.FC = () => {
   const areas = selector.data.filter((item) => item.type === 'area');
 
   useEffect(() => {
+    sessionStorage.setItem('isHelp', 'true');
+  });
+
+  useEffect(() => {
     return () => {
       Ref &&
         (() => {
